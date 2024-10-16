@@ -4,7 +4,8 @@
   "description": "api for work purposes",
   "main": "apiServer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "nodemon apiServer.js"
   },
   "author": "Favour Israel Chinedum",
   "license": "ISC",
