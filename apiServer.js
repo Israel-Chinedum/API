@@ -5,7 +5,7 @@ const app =  express();
 const port = process.env.PORT || 2500;
 
 app.use(cors());
-app.user(express.json());
+app.use(express.json());
 
 //GET REQUEST HADLERS 
 app.get('', (req, res) => {
