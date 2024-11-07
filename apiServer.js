@@ -35,7 +35,7 @@ app.post('/profile/data', (req, res) => {
     }
 });
 
-app.get('/personal/details', (req, res) => {
+app.post('/personal/details', (req, res) => {
     res.json({
         Surname: 'Dike',
         FirstName: 'Victor',
