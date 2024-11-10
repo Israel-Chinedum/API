@@ -279,6 +279,32 @@ app.get('/all/students', (req, res) => {
     ]);
 });
 
+const users = [
+    {username: 'favour israel', password: 'favour1234'},
+    {username: 'victor dike', password: 'victor1234'},
+    {username: 'chinyere maduforo', password: 'chinyere1234'}
+]
+
+
+app.post('/login', (req, res) => {
+    for(let i of users){
+        if(i.username == req.body.username && i.password == req.body.password){
+            res.cookie('message', 'Login successfull!');
+        } else{
+            res.cookie('Error', 'Invalid username or password!');
+        }
+    }
+});
+
+app.post('/register', (req, res) => {
+    for(let i of users){
+        if(i.username == req.body.username){
+            res.cookie('Error', 'This username has already been taken!');
+        } else{
+            res.cookie('message', 'Registration successfull!')
+        }
+    }
+})
 
 
 
