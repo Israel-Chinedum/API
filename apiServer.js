@@ -301,12 +301,14 @@ app.post('/login', (req, res) => {
                 secure: true,
                 sameSite: "None"
             });
+            res.json({yourData: req.body});
         } else{
             res.cookie('Error', 'Invalid username or password!', {
                 httpOnly: true,
                 secure: true,
                 sameSite: "None"
             });
+            res.json({yourData: req.body});
         }
     }
 });
