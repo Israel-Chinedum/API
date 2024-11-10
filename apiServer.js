@@ -4,7 +4,14 @@ import cors from 'cors';
 const app =  express();
 const port = process.env.PORT || 2500;
 
-app.use(cors());
+
+app.use(cors({
+    origin: function (origin, callback){
+        callback(null, origin);
+    },
+    credentials: true
+}));
+
 app.use(express.json());
 
 //POST REQUEST HADLERS 
@@ -289,9 +296,17 @@ const users = [
 app.post('/login', (req, res) => {
     for(let i of users){
         if(i.username == req.body.username && i.password == req.body.password){
-            res.cookie('message', 'Login successfull!');
+            res.cookie('message', 'Login successfull!', {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            });
         } else{
-            res.cookie('Error', 'Invalid username or password!');
+            res.cookie('Error', 'Invalid username or password!', {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            });
         }
     }
 });
@@ -299,9 +314,17 @@ app.post('/login', (req, res) => {
 app.post('/register', (req, res) => {
     for(let i of users){
         if(i.username == req.body.username){
-            res.cookie('Error', 'This username has already been taken!');
+            res.cookie('Error', 'This username has already been taken!', {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            });
         } else{
-            res.cookie('message', 'Registration successfull!')
+            res.cookie('message', 'Registration successfull!', {
+                httpOnly: true,
+                secure: true,
+                sameSite: "None"
+            })
         }
     }
 })
